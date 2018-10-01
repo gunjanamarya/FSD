@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment 4</title>
+    <script src="main.js"></script>
+    <style>
+        h1 {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div align="center">
+        <h1>HTML5 Drag and Drop</h1>
+        <h3>Drag list of items on Dustbin</h3>
+        <table>
+            <tr>
+                <td>
+                    <img id="bin" src="./bin.PNG" ondrop="drop(event)" ondragover="allowDrop(event)">
+                </td>
+                <td>
+                    <img id="music" src="./music.PNG" ondragstart="drag(event)" draggable="true">
+                    <br>
+                    <img id="docs" src="./docs.PNG" ondragstart="drag(event)" draggable="true">
+                    <br>
+                    <img id="videos" src="./videos.PNG" ondragstart="drag(event)" draggable="true">
+                    <br>
+                    <img id="images" src="./images.PNG" ondragstart="drag(event)" draggable="true">
+                    <br>
+                    <img id="others" src="./others.PNG" ondragstart="drag(event)" draggable="true">
+                    <br>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

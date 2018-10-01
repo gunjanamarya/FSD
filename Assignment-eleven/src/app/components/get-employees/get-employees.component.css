@@ -1,0 +1,9 @@
+.outer-div{
+    padding-top: 50px;
+    width: 90%;
+    margin: auto;
+}
+
+button{
+    margin-right: 5px;
+}

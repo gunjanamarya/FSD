@@ -1,0 +1,23 @@
+<div class="outer-div">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>S No.</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of emp_list; index as i">
+                <td>{{i+1}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.age}}</td>
+                <td>{{emp.email}}</td>
+                <td><button (click)="onEdit(emp)">Edit</button><button (click)="onDelete(emp.id)">Delete</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

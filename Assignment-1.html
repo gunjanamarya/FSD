@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment 1</title>
+</head>
+
+<body>
+
+    Fields marked (*) are required
+    <form method="POST">
+        <fieldset>
+            <legend>
+                <h4>Input Text Field Validation</h4>
+            </legend>
+            <label for="fname">First Name *</label>
+            <input type="text" required id="fname" placeholder="First Name" />
+            <br>
+            <br>
+            <label for="lname">Last Name *</label>
+            <input type="text" required id="lname" placeholder="Last Name" />
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <h4>Email and URL Validation</h4>
+            </legend>
+            <label for="email">Email *</label>
+            <input type="email" required id="email" placeholder="e.g. swapnil@example.com" />
+            <br>
+            <br>
+            <label for="website">Website *</label>
+            <input type="url" required id="website" placeholder="e.g. http://www.html5andcss3.org" />
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <h4>Mobile or Phone Number Validation</h4>
+            </legend>
+            <label for="mobile">Mobile *</label>
+            <input type="text" pattern="[1-9]{1}[0-9]{9}" required id="mobile" placeholder="Please enter a ten digit phone number" />
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <h4>Drop Down Box Validation </h4>
+            </legend>
+            <label for="country">Country</label>
+            <select id="country">
+                <option value="India">India</option>
+                <option value="Japan">Japan</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <h4>Number Validation with Specific Range</h4>
+            </legend>
+            <label for="postCode">Post code *</label>
+            <input type="number" min="100000" max="999999" required id="postCode" />
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <h4>Text Area Validation</h4>
+            </legend>
+            <label for="address">Address *</label>
+            <textarea rows="3" cols="30" required id="address"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <h4>Checkbox and Radio Button Validation</h4>
+            </legend>
+            <label for="tc">Agree to T & C *</label>
+            <input type="checkbox" required id="tc" />
+            <br>
+            <br>
+            <label for="gender">Gender *</label>
+            <label>
+                <input type="radio" name="gen" value="Male" required>&nbsp; Male
+            </label>
+            <label>
+                <input type="radio" name="gen" value="Female" required>&nbsp; Female
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <h4>Password Validation</h4>
+            </legend>
+            <label for="password">Password *</label>
+            <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required id="password" title="Password should be atleast 8 characters long and must contain atleast one digit, one uppercase and one lowercase characters"
+            />
+        </fieldset>
+        <br>
+        <button>Sign up</button>
+    </form>
+</body>
+
+</html>

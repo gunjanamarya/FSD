@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment 6</title>
+    <style>
+        .main-div {
+            width: 70%;
+            margin: auto;
+        }
+
+        input {
+            width: 300px;
+            height: 25px;
+            padding: 5px;
+            margin: 10px;
+            outline: none;
+            border-radius: 3px;
+            border: 2px solid rgb(189, 183, 183);
+            box-shadow: 0 0 10px rgb(189, 183, 183);
+        }
+
+        textarea {
+            padding: 5px;
+            margin: 10px;
+            outline: none;
+            border-radius: 3px;
+            border: 2px solid rgb(189, 183, 183);
+            box-shadow: 0 0 5px rgb(189, 183, 183);
+        }
+
+        input:valid,
+        textarea:valid {
+            border-color: rgb(20, 192, 20);
+            background-image: url('./ok.png');
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: right;
+            box-shadow: 0 0 5px rgb(20, 192, 20);
+        }
+
+        input:invalid,
+        textarea:invalid {
+            background-origin: content-box;
+            margin-right: 10px;
+            background-image: url('./asterisk_icon.png');
+            background-size: 8px;
+            background-repeat: no-repeat;
+            background-position: right;
+        }
+
+        .top-table {
+            width: 100%;
+        }
+
+        .top-table>tbody>tr>td {
+            width: 50%;
+        }
+
+        #myForm:valid button {
+            background-color: rgb(20, 192, 20);
+            border: 1px solid rgb(20, 192, 20);
+            color: white;
+            height: 30px;
+        }
+
+        button {
+            color: black;
+            width: 120px;
+            height: 25px;
+            margin: 10px;
+            background-color: gainsboro;
+            border: 1px solid rgb(189, 183, 183);
+            border-radius: 3px;
+        }
+
+        h1,
+        p {
+            margin: 5px;
+        }
+
+        table.inner-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table.inner-table tr {
+            border-bottom: 1px solid gainsboro;
+        }
+
+        table.inner-table tr:last-child {
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-div">
+        <hr>
+        <table class="top-table">
+            <tbody>
+                <tr>
+                    <td>
+                        <h1>Contact Us</h1>
+                    </td>
+                    <td style="vertical-align:bottom">
+                        <p style="color: red;text-align: right;">* Denotes Required Field</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <form id="myForm">
+            <table class="inner-table">
+                <tr>
+                    <td style="width:180px;">
+                        <strong>Name:</strong>
+                    </td>
+                    <td>
+                        <input type="text" required/>
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Email:</strong>
+                    </td>
+                    <td>
+                        <input type="email" required placeholder="john_doe@example.com" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Website:</strong>
+                    </td>
+                    <td>
+                        <input type="url" required placeholder="http://johndoe.com" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Message:</strong>
+                    </td>
+                    <td>
+                        <textarea required rows="8" cols="50"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button>Submit Form</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <hr>
+    </div>
+</body>
+
+</html>
