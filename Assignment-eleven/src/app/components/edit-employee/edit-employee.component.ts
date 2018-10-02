@@ -25,13 +25,21 @@ export class EditEmployeeComponent implements OnInit {
     this.getParams();
   }
 
+  // Fetch the route parameter and set the form values
   getParams() {
-    this.id = this.route.snapshot.queryParamMap.get('id');
-    this.name = this.route.snapshot.queryParamMap.get('name');
-    this.age = +this.route.snapshot.queryParamMap.get('age');
-    this.email = this.route.snapshot.queryParamMap.get('email');
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.empService.getEmps().subscribe(data => {
+      data.forEach(e => {
+        if (this.id == e.id) {
+          this.name = e.name;
+          this.email = e.email;
+          this.age = e.age;
+        }
+      })
+    })
   }
 
+  // Update employee details
   onEdit() {
     this.empService.getEmps().subscribe(data => {
       data.forEach(e => {
@@ -53,6 +61,7 @@ export class EditEmployeeComponent implements OnInit {
 
   }
 
+  // Reset to the original employee's details 
   onCancel() {
     this.getParams();
     this.msg = null;

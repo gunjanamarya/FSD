@@ -15,26 +15,26 @@ export class GetEmployeesComponent implements OnInit {
   constructor(private empService: EmpService,
     private router: Router) { }
 
+  // Stores the employee details
   emp_list: Employee[];
 
   ngOnInit() {
+
+    // Fetch all employee details
     this.empService.getEmps().subscribe(data => {
       this.emp_list = data;
     })
   }
 
   onEdit(emp) {
-    this.router.navigate(['edit/'], {
-      queryParams: {
-        id: emp.id,
-        name: emp.name,
-        age: emp.age,
-        email: emp.email
-      }
-    })
+
+    // Navigate to Edit Employeee screen
+    this.router.navigate(['edit/' + emp.id])
   }
 
   onDelete(id) {
+
+    // Delete the employee based on the passed id
     this.empService.deleteEmp(id).subscribe(data => {
       this.empService.getEmps().subscribe(data => {
         this.emp_list = data;

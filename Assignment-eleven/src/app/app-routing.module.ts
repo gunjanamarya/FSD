@@ -7,7 +7,7 @@ import { GetEmployeesComponent } from './components/get-employees/get-employees.
 const appRoutes: Routes = [
   { path: 'get', component: GetEmployeesComponent },
   { path: 'add', component: AddEmployeeComponent },
-  { path: 'edit', component: EditEmployeeComponent },
+  { path: 'edit/:id', component: EditEmployeeComponent },
   {
     path: '', redirectTo: '/get',
     pathMatch: 'full'

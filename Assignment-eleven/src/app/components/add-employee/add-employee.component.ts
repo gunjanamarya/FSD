@@ -20,6 +20,7 @@ export class AddEmployeeComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Add new employee
   onSubmit() {
     if (this.name && this.email && this.age) {
       let emp = {
@@ -38,6 +39,7 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
 
+  // Reset the form values to null
   onCancel() {
     if (!this.msg) {
       this.name = null;
