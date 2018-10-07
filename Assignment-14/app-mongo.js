@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const Employee = require('./schema/Employee');
 
-mongoose.connect('mongodb://localhost/test-db', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/test-db-mongo', { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'Can not connect to db :('));
 
 db.once('open', function () {
-    console.log('Question 1 : test-db created successfully !!!');
+    console.log('Question 1 : test-db-mongo created successfully !!!');
     var emps = [{
         name: 'Will Robinson',
         age: 25,
@@ -31,10 +31,9 @@ db.once('open', function () {
                 else {
                     console.log('Question 3 : Employee details - ');
                     console.log(emps);
+                    db.close();
                 }
             });
         }
     });
 });
-
-
