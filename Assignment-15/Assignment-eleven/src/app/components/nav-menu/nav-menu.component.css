@@ -1,0 +1,19 @@
+.nav{
+    background-color: rgb(9, 117, 240);
+    color: white;
+    overflow: hidden;
+    
+}
+
+.nav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.active{
+    background-color: rgb(27, 93, 194);
+}

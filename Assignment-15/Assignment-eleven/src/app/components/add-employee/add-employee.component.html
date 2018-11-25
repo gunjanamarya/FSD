@@ -1,0 +1,44 @@
+<div class="outer-div" align="center">
+  <h2>New Employee</h2>
+  <hr>
+  <form (ngSubmit)="onSubmit()">
+    <table>
+      <tbody>
+        <tr>
+          <td class="expand-col">
+            Name
+          </td>
+          <td>
+            <input [(ngModel)]="name" name="name" placeholder="Name" type="text" class="form-control" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Age
+          </td>
+          <td>
+            <input [(ngModel)]="age" name="age" placeholder="Age" type="number" class="form-control" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Email
+          </td>
+          <td>
+            <input [(ngModel)]="email" name="email" placeholder="Email" type="email" class="form-control" required />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button class="add">ADD</button><button type="button" class="cancel" (click)="onCancel()">CANCEL</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <div class="alert alert-success" role="alert" *ngIf="msg">
+    {{msg}}
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
+</div>
