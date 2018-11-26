@@ -7,7 +7,7 @@ This will execute all the tasks sequentially and will put the results in build d
 
 Contents of build folder created after executing above steps -
 1. Copy of main-8-1.js file
-2. styles.css - Compiled from styles.sass file
+2. styles.css - Compiled from styles.scss file
 3. scripts.js - Created from the concatenation of two or more js files
 4. sampletxt directory- having header/footer added to all the txt files
 5. main.min.js - minification of js files
