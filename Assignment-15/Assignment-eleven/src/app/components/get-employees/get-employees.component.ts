@@ -22,6 +22,7 @@ export class GetEmployeesComponent implements OnInit {
 
     // Fetch all employee details
     this.empService.getEmps().subscribe(data => {
+      console.log(data)
       this.emp_list = data;
     })
   }

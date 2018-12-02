@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { GetEmployeesComponent } from './get-employees.component';
 
 describe('GetEmployeesComponent', () => {
@@ -8,18 +8,17 @@ describe('GetEmployeesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GetEmployeesComponent ]
+      imports: [HttpClientTestingModule],
+      declarations: [GetEmployeesComponent],
     })
-    .compileComponents();
+      .compileComponents().then(() => {
+      })
   }));
 
-  beforeEach(() => {
+  it('should create', () => {
     fixture = TestBed.createComponent(GetEmployeesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
