@@ -22,7 +22,7 @@ export class GetEmployeesComponent implements OnInit {
 
     // Fetch all employee details
     this.empService.getEmps().subscribe(data => {
-      console.log(data)
+      // console.log(data)
       this.emp_list = data;
     })
   }
@@ -37,6 +37,7 @@ export class GetEmployeesComponent implements OnInit {
 
     // Delete the employee based on the passed id
     this.empService.deleteEmp(id).subscribe(data => {
+      console.log(data);
       this.empService.getEmps().subscribe(data => {
         this.emp_list = data;
       })
