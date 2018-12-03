@@ -1,7 +1,7 @@
 <div class="outer-div" align="center">
   <h2>Edit Employee</h2>
   <hr>
-  <form (ngSubmit)="onEdit()">
+  <form id="emp-form" [formGroup]="empForm" (ngSubmit)="onEdit()" novalidate>
     <table>
       <tbody>
         <tr>
@@ -9,7 +9,7 @@
             Name
           </td>
           <td>
-            <input [(ngModel)]="name" name="name" placeholder="Name" type="text" class="form-control" required />
+            <input formControlName="name" placeholder="Name" class="form-control" />
           </td>
         </tr>
         <tr>
@@ -17,7 +17,7 @@
             Age
           </td>
           <td>
-            <input [(ngModel)]="age" name="age" placeholder="Age" type="number" class="form-control" required />
+            <input formControlName="age" placeholder="Age" class="form-control" />
           </td>
         </tr>
         <tr>
@@ -25,12 +25,13 @@
             Email
           </td>
           <td>
-            <input [(ngModel)]="email" name="email" placeholder="Email" type="email" class="form-control" required />
+            <input formControlName="email" placeholder="Email" class="form-control" />
           </td>
         </tr>
         <tr>
           <td></td>
-          <td><button class="update">UPDATE</button><button type="button" (click)="onCancel()" class="cancel">CANCEL</button></td>
+          <td><button type=submit class="update" [disabled]="!empForm.valid">UPDATE</button><button type="button"
+              (click)="onCancel()" class="cancel">CANCEL</button></td>
         </tr>
       </tbody>
     </table>

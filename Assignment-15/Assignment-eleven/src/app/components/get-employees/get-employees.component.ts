@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 
 export class GetEmployeesComponent implements OnInit {
 
+  title = 'Get Employees';
+
   constructor(private empService: EmpService,
     private router: Router) { }
 

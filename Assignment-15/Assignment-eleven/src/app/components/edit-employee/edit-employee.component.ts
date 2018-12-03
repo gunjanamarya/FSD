@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpService } from '../../services/emp.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-employee',
@@ -11,15 +12,25 @@ import { ActivatedRoute } from '@angular/router';
 
 export class EditEmployeeComponent implements OnInit {
 
+  title = 'Edit Employee';
+  empForm: FormGroup;
   id: any;
-  name: string;
-  age: number;
-  email: string;
   msg: string;
   error: string;
 
   constructor(private empService: EmpService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private fb: FormBuilder) {
+    this.createForm();
+  }
+
+  createForm() {
+    this.empForm = this.fb.group({
+      name: [null, Validators.required],
+      age: [null, [Validators.required, Validators.pattern("[0-9]+")]],
+      email: [null, [Validators.required, Validators.email]]
+    });
+  }
 
   ngOnInit() {
     this.getParams();
@@ -31,9 +42,11 @@ export class EditEmployeeComponent implements OnInit {
     this.empService.getEmps().subscribe(data => {
       data.forEach(e => {
         if (this.id == e.id) {
-          this.name = e.name;
-          this.email = e.email;
-          this.age = e.age;
+          this.empForm.setValue({
+            name: e.name,
+            email: e.email,
+            age: e.age
+          });
         }
       })
     })
@@ -44,9 +57,9 @@ export class EditEmployeeComponent implements OnInit {
     this.empService.getEmps().subscribe(data => {
       data.forEach(e => {
         if (e.id == this.id) {
-          e.name = this.name;
-          e.age = this.age;
-          e.email = this.email;
+          e.name = this.empForm.get('name').value;
+          e.age = this.empForm.get('age').value;
+          e.email = this.empForm.get('email').value;
           this.empService.editEmp(e).subscribe(info => {
             this.msg = 'Employee updated successfully :)';
             this.error = null;
