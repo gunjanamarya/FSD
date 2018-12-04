@@ -1,0 +1,10 @@
+.top-div{
+    top: 50%;   
+    padding-left: 1%; 
+    height: 60px;
+    line-height: 60px;
+    color: white;
+    vertical-align: middle;
+    background-color: rgb(11, 157, 194);
+    font-size: 24px;
+}

@@ -1,14 +1,14 @@
 <div class="main-div">
   <div class="top-div">LOGIN</div>
-  <form>
+  <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" placeholder="Enter Username">
+      <input formControlName="username" type="text" class="form-control" id="username" placeholder="Enter Username">
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Enter Password">
+      <input formControlName="password" type="password" class="form-control" id="password" placeholder="Enter Password">
     </div>
-    <button type="submit" class="btn">SUBMIT</button>
+    <button type="submit" class="btn" [disabled]="!loginForm.valid">SUBMIT</button>
   </form>
 </div>

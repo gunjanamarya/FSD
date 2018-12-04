@@ -4,5 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  items: [
+    { "item": "Pen", "price": 20 },
+    { "item": "Pencil", "price": 20 },
+    { "item": "Eraser", "price": 10 },
+    { "item": "Writing Pad", "price": 30 },
+    { "item": "Sharper", "price": 10 },
+    { "item": "Ruler", "price": 20 }
+  ]
 };
