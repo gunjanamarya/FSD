@@ -30,14 +30,17 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.user = {
       username: this.loginForm.get('username').value,
       password: this.loginForm.get('password').value
     }
-    console.log(this.user)
-    this.router.navigate(['dashboard']);
+
+    this.loginService.login(this.user).subscribe(result => {
+      this.router.navigate(['dashboard']);
+    }, error => {
+      console.log('Authentication failed')
+    })
   }
-
-
 
 }

@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  items: [
+  products: [
     { "item": "Pen", "price": 20 },
     { "item": "Pencil", "price": 20 },
     { "item": "Eraser", "price": 10 },
