@@ -6,7 +6,7 @@ import { User } from '../models/User.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   })
 };
 
@@ -17,7 +17,24 @@ export class LoginService {
   constructor(private _http: HttpClient) { }
 
   login(user): Observable<User> {
-    return this._http.post<User>(this.base_url + 'login', user, httpOptions)
+    return this._http.post<User>(this.base_url + 'login', user, { withCredentials: true })
+  }
+
+  logout() {
+    return this._http.get(this.base_url + 'logout', { withCredentials: true })
+  }
+
+  setUsername(username) {
+    sessionStorage.setItem('username', username);
+  }
+
+  getUsername() {
+    return sessionStorage.getItem('username')
+  }
+
+  clearSession() {
+    sessionStorage.removeItem('username');
+    // sessionStorage.clear();
   }
 
 }

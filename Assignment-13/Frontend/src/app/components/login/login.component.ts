@@ -3,23 +3,30 @@ import { User } from '../../models/User.model';
 import { LoginService } from '../../services/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [LoginService]
+  providers: [LoginService, CookieService]
 })
 export class LoginComponent implements OnInit {
 
   private user: User;
   private loginForm: FormGroup;
+  public error: string;
+
   constructor(private fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router) {
+    private router: Router,
+    private cookieService: CookieService) {
     this.createForm();
   }
 
   ngOnInit() {
+    this.loginService.clearSession();
+    this.cookieService.delete('connect.sid', '/');
   }
 
   createForm() {
@@ -37,8 +44,11 @@ export class LoginComponent implements OnInit {
     }
 
     this.loginService.login(this.user).subscribe(result => {
+      this.error = null;
+      this.loginService.setUsername(result.username);
       this.router.navigate(['dashboard']);
     }, error => {
+      this.error = "Invalid Username or Password !!"
       console.log('Authentication failed')
     })
   }

@@ -11,4 +11,8 @@
     </div>
     <button type="submit" class="btn" [disabled]="!loginForm.valid">SUBMIT</button>
   </form>
+  <br>
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
 </div>

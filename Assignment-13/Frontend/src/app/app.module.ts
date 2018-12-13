@@ -10,7 +10,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CartComponent } from './components/cart/cart.component';
 import { HistoryComponent } from './components/history/history.component';
-
+import { LoginGuard } from './guards/login.guard';
+import { LoginService } from './services/login.service';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { HistoryComponent } from './components/history/history.component';
     LoginComponent,
     DashboardComponent,
     CartComponent,
-    HistoryComponent
+    HistoryComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { HistoryComponent } from './components/history/history.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [LoginGuard, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,7 +14,8 @@ const port = 3000;
 
 app.use(session({ secret: "login-secret", resave: true, saveUninitialized: true }));
 app.use(cors({
-    origin: 'http://localhost:4200'
+    origin: ['http://localhost:4200'],
+    credentials: true
 }));
 app.use(flash());
 app.use(bodyParser.json());
@@ -28,7 +29,9 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (user, done) {
-    db.query("SELECT * FROM `users` where `username`= ?", [user.username], function (err, user) {
+    db.query("SELECT * FROM `users` where `username`= ?", [user], function (err, user) {
+        user = JSON.parse(JSON.stringify(user));
+        user = user[0];
         done(err, user);
     });
 });

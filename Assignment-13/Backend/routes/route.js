@@ -18,11 +18,12 @@ router.get('/users', function (req, res, next) {
 router.post('/login', passport.authenticate('local', {
     failureFlash: true
 }), function (req, res) {
-    res.json({ "logged_user": req.user.username });
+    res.json({ 'username': req.user.username });
 });
 
 router.get('/logout', function (req, res) {
-    req.logout();
+    req.logOut();
+    return res.json({ authenticated: req.isAuthenticated() });
 });
 
 module.exports = router;
