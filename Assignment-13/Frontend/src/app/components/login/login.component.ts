@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginService.clearSession();
-    this.cookieService.delete('connect.sid', '/');
+    this.cookieService.delete('connect.sid', 'http://localhost:4200');
   }
 
   createForm() {
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(this.user).subscribe(result => {
       this.error = null;
-      this.loginService.setUsername(result.username);
+      this.loginService.setSessionStorageVar('username', result.username);
       this.router.navigate(['dashboard']);
     }, error => {
       this.error = "Invalid Username or Password !!"

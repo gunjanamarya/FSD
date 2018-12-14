@@ -21,5 +21,38 @@ img{
 .cost{
     float:right;
     color: green;
-    /* font-style: italic; */
+}
+
+.add-items{
+    display: inline;   
+    float: right; 
+}
+
+button{
+    background-color: white;
+    border: 1px solid green;
+    cursor: pointer;
+}
+
+.selection{
+    /* display: inline; */
+    float: right !important;
+}
+
+.amt-spent, .total-price, .goto{
+    display: inline;
+}
+
+.cart-header{    
+    padding-left: 1%;
+    background-color: #6c757d;
+    color: white;
+}
+
+a{
+    display: inherit;
+    float: right;
+    padding-right: 1%;     
+    color: white;
+    text-decoration: none;    
 }

@@ -1,3 +1,72 @@
-<p>
-  cart works!
-</p>
+<app-header></app-header>
+
+<div class="item-div" *ngIf="find('Pen')!=-1">
+  <img src="../../../assets/pen.jpg" alt="Card image cap">
+  <div class="content">
+    Item : {{cart[find('Pen')].item}}
+    <br>
+    Total Quantity : {{cart[find('Pen')].quantity}}
+    <br>
+    Total Price : {{findPrice('Pen') * cart[find('Pen')].quantity}}
+  </div>
+</div>
+
+<div class="item-div" *ngIf="find('Pencil')!=-1">
+  <img src="../../../assets/pencil.jpg" alt="Card image cap">
+  <div class="content">
+    Item : {{cart[find('Pencil')].item}}
+    <br>
+    Total Quantity : {{cart[find('Pencil')].quantity}}
+    <br>
+    Total Price : {{findPrice('Pencil') * cart[find('Pencil')].quantity}}
+  </div>
+</div>
+
+<div class="item-div" *ngIf="find('Eraser')!=-1">
+  <img src="../../../assets/eraser.jpg" alt="Card image cap">
+  <div class="content">
+    Item : {{cart[find('Eraser')].item}}
+    <br>
+    Total Quantity : {{cart[find('Eraser')].quantity}}
+    <br>
+    Total Price : {{findPrice('Eraser') * cart[find('Eraser')].quantity}}
+  </div>
+</div>
+
+<div class="item-div" *ngIf="find('Sharpner')!=-1">
+  <img src="../../../assets/sharpner.jpg" alt="Card image cap">
+  <div class="content">
+    Item : {{cart[find('Sharpner')].item}}
+    <br>
+    Total Quantity : {{cart[find('Sharpner')].quantity}}
+    <br>
+    Total Price : {{findPrice('Sharpner') * cart[find('Sharpner')].quantity}}
+  </div>
+</div>
+
+<div class="item-div" *ngIf="find('Writing Pad')!=-1">
+  <img src="../../../assets/writing-pad.jpg" alt="Card image cap">
+  <div class="content">
+    Item : {{cart[find('Writing Pad')].item}}
+    <br>
+    Total Quantity : {{cart[find('Writing Pad')].quantity}}
+    <br>
+    Total Price : {{findPrice('Writing Pad') * cart[find('Writing Pad')].quantity}}
+  </div>
+</div>
+
+<div class="item-div" *ngIf="find('Ruler')!=-1">
+  <img src="../../../assets/ruler.jpg" alt="Card image cap">
+  <div class="content">
+    Item : {{cart[find('Ruler')].item}}
+    <br>
+    Total Quantity : {{cart[find('Ruler')].quantity}}
+    <br>
+    Total Price : {{findPrice('Ruler') * cart[find('Ruler')].quantity}}
+  </div>
+</div>
+
+<button type="button" class="btn btn-success">Place Order</button>
+<br>
+<br>
+<p> Missed Something or want to edit your order ?? <a routerLink="/dashboard">Go Back</a></p>

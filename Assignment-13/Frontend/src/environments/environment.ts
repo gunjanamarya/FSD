@@ -9,8 +9,8 @@ export const environment = {
     { "item": "Pen", "price": 20 },
     { "item": "Pencil", "price": 20 },
     { "item": "Eraser", "price": 10 },
+    { "item": "Sharpner", "price": 10 },
     { "item": "Writing Pad", "price": 30 },
-    { "item": "Sharper", "price": 10 },
     { "item": "Ruler", "price": 20 }
   ]
 };

@@ -24,17 +24,21 @@ export class LoginService {
     return this._http.get(this.base_url + 'logout', { withCredentials: true })
   }
 
-  setUsername(username) {
-    sessionStorage.setItem('username', username);
+  setSessionStorageVar(key, value) {
+    sessionStorage.setItem(key, value);
   }
 
-  getUsername() {
-    return sessionStorage.getItem('username')
+  getSessionStorageVar(key) {
+    return sessionStorage.getItem(key)
   }
 
   clearSession() {
-    sessionStorage.removeItem('username');
-    // sessionStorage.clear();
+    // sessionStorage.removeItem('username');
+    sessionStorage.clear();
+  }
+
+  clearSessionVar(key) {
+    sessionStorage.removeItem(key);
   }
 
 }

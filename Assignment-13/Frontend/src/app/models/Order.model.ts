@@ -5,7 +5,7 @@ export class Order {
     order_status: string;
 }
 
-class Cart {
+export class Cart {
     item: string;
-    price: number;
+    quantity: number = 0;
 }

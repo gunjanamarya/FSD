@@ -1,5 +1,14 @@
 <app-header></app-header>
 
+<div class="cart-header" *ngIf="amount_spent > 0">
+    <span class="amt-spent">
+        &#x20b9; {{amount_spent}} <br> **Inclusive of all taxes
+    </span>
+    <span>
+        <a routerLink="/cart">VIEW CART -></a>
+    </span>
+</div>
+
 <div class="card-group">
     <div class="card">
         <img class="card-img-top" src="../../../assets/pen.jpg" alt="Card image cap">
@@ -7,7 +16,25 @@
             <h5 class="card-title">FOUNTAIN PEN
                 <p class="cost">&#x20b9; 20</p>
             </h5>
-            <p class="card-text"></p>
+            <div class="card-text">
+                <div class="total-price">
+                    &#x20b9; {{ displayQuantity('Pen') * (findPrice('Pen')) }}
+                </div>
+                <div class="selection">
+                    <div class="add-items" *ngIf="displayQuantity('Pen')">
+                        <button (click)="decreement('Pen')">-</button>
+                    </div>
+                    <div class="add-items" *ngIf="!displayQuantity('Pen')">
+                        <button (click)="add(0)">Add</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Pen')">
+                        <button>{{displayQuantity('Pen')}}</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Pen')">
+                        <button (click)="increement('Pen')">+</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="card">
@@ -16,7 +43,25 @@
             <h5 class="card-title">PENCIL
                 <p class="cost">&#x20b9; 20</p>
             </h5>
-            <p class="card-text"><small class="text-muted"></small></p>
+            <div class="card-text">
+                <div class="total-price">
+                    &#x20b9; {{ displayQuantity('Pencil') * (findPrice('Pencil')) }}
+                </div>
+                <div class="selection">
+                    <div class="add-items" *ngIf="displayQuantity('Pencil')">
+                        <button (click)="decreement('Pencil')">-</button>
+                    </div>
+                    <div class="add-items" *ngIf="!displayQuantity('Pencil')">
+                        <button (click)="add(1)">Add</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Pencil')">
+                        <button>{{displayQuantity('Pencil')}}</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Pencil')">
+                        <button (click)="increement('Pencil')">+</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="card">
@@ -25,7 +70,25 @@
             <h5 class="card-title">ERASER
                 <p class="cost">&#x20b9; 10</p>
             </h5>
-            <p class="card-text"></p>
+            <div class="card-text">
+                <div class="total-price">
+                    &#x20b9; {{ displayQuantity('Eraser') * (findPrice('Eraser')) }}
+                </div>
+                <div class="selection">
+                    <div class="add-items" *ngIf="displayQuantity('Eraser')">
+                        <button (click)="decreement('Eraser')">-</button>
+                    </div>
+                    <div class="add-items" *ngIf="!displayQuantity('Eraser')">
+                        <button (click)="add(2)">Add</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Eraser')">
+                        <button>{{displayQuantity('Eraser')}}</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Eraser')">
+                        <button (click)="increement('Eraser')">+</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -37,7 +100,25 @@
             <h5 class="card-title">PENCIL SHARPNER
                 <p class="cost">&#x20b9; 10</p>
             </h5>
-            <p class="card-text"></p>
+            <div class="card-text">
+                <div class="total-price">
+                    &#x20b9; {{ displayQuantity('Sharpner') * (findPrice('Sharpner')) }}
+                </div>
+                <div class="selection">
+                    <div class="add-items" *ngIf="displayQuantity('Sharpner')">
+                        <button (click)="decreement('Sharpner')">-</button>
+                    </div>
+                    <div class="add-items" *ngIf="!displayQuantity('Sharpner')">
+                        <button (click)="add(3)">Add</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Sharpner')">
+                        <button>{{displayQuantity('Sharpner')}}</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Sharpner')">
+                        <button (click)="increement('Sharpner')">+</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="card">
@@ -46,7 +127,25 @@
             <h5 class="card-title">WRITING PAD
                 <p class="cost">&#x20b9; 30</p>
             </h5>
-            <p class="card-text"><small class="text-muted"></small></p>
+            <div class="card-text">
+                <div class="total-price">
+                    &#x20b9; {{ displayQuantity('Writing Pad') * (findPrice('Writing Pad')) }}
+                </div>
+                <div class="selection">
+                    <div class="add-items" *ngIf="displayQuantity('Writing Pad')">
+                        <button (click)="decreement('Writing Pad')">-</button>
+                    </div>
+                    <div class="add-items" *ngIf="!displayQuantity('Writing Pad')">
+                        <button (click)="add(4)">Add</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Writing Pad')">
+                        <button>{{displayQuantity('Writing Pad')}}</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Writing Pad')">
+                        <button (click)="increement('Writing Pad')">+</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="card">
@@ -55,7 +154,25 @@
             <h5 class="card-title">RULER
                 <p class="cost">&#x20b9; 20</p>
             </h5>
-            <p class="card-text"></p>
+            <div class="card-text">
+                <div class="total-price">
+                    &#x20b9; {{ displayQuantity('Ruler') * (findPrice('Ruler')) }}
+                </div>
+                <div class="selection">
+                    <div class="add-items" *ngIf="displayQuantity('Ruler')">
+                        <button (click)="decreement('Ruler')">-</button>
+                    </div>
+                    <div class="add-items" *ngIf="!displayQuantity('Ruler')">
+                        <button (click)="add(5)">Add</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Ruler')">
+                        <button>{{displayQuantity('Ruler')}}</button>
+                    </div>
+                    <div class="add-items" *ngIf="displayQuantity('Ruler')">
+                        <button (click)="increement('Ruler')">+</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
