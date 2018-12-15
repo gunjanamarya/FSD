@@ -27,7 +27,7 @@ con.connect(function (err) {
         ]
         con.query("INSERT INTO `users`(username,password) VALUES ?", [users], function (err, result) {
             if (err) throw err;
-            con.query("CREATE TABLE IF NOT EXISTS `orders` ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `username` VARCHAR(50) NOT NULL, `cart` JSON NOT NULL, `amount_spent` INT UNSIGNED NOT NULL, purchase_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, `order_status` VARCHAR(20) NOT NULL, PRIMARY KEY(`id`),  CONSTRAINT `username` FOREIGN KEY(`username`) REFERENCES `users`(`username`))", function (err, result) {
+            con.query("CREATE TABLE IF NOT EXISTS `orders` ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `username` VARCHAR(50) NOT NULL, `cart` VARCHAR(500) NOT NULL, `amount_spent` INT UNSIGNED NOT NULL, purchase_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, `order_status` VARCHAR(20) NOT NULL, PRIMARY KEY(`id`))", function (err, result) {
                 if (err) throw err;
                 con.end();
             });

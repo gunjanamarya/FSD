@@ -4,12 +4,15 @@ import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { Order } from '../models/Order.model';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};
-
+const httpOptions =
+{
+  headers:
+    new HttpHeaders(
+      {
+        "Content-Type": "application/json"
+      }),
+  withCredentials: true,
+}
 @Injectable()
 export class OrderService {
 
@@ -20,7 +23,11 @@ export class OrderService {
     return this._http.post<Order>(this.base_url + 'place-order', order, httpOptions);
   }
 
-  getCart(): Observable<Order[]> {
-    return this._http.get<Order[]>(this.base_url + '/get-orders');
+  getCart(): any {
+    return this._http.get<any>(this.base_url + 'get-order', httpOptions);
+  }
+
+  deleteOrder(id): any {
+    return this._http.delete(this.base_url + `delete-order/${id}`)
   }
 }

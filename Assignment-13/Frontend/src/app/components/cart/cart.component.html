@@ -1,5 +1,6 @@
 <app-header></app-header>
 
+<h5>Your Cart:</h5>
 <div class="item-div" *ngIf="find('Pen')!=-1">
   <img src="../../../assets/pen.jpg" alt="Card image cap">
   <div class="content">
@@ -66,7 +67,24 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-success">Place Order</button>
+<button type="button" class="btn btn-success" (click)="submit()">Place Order</button>
 <br>
 <br>
 <p> Missed Something or want to edit your order ?? <a routerLink="/dashboard">Go Back</a></p>
+<p *ngIf="error" style="color:red">{{error}}</p>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5>Yay !! Your order is submitted .
+        </h5>
+        <br>
+        <button type="button" class="btn btn-success" style="margin:0px"><a routerLink="/history" style="text-decoration: none; color: white">View
+            Active Order(s)</a></button>
+      </div>
+
+    </div>
+  </div>
+</div>

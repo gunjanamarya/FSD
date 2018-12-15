@@ -1,8 +1,10 @@
 export class Order {
-    username: string;
+    id?: number;
+    username?: string;
     cart: Cart[];
     amount_spent: number;
     order_status: string;
+    purchase_timestamp?: string;
 }
 
 export class Cart {

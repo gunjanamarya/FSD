@@ -4,11 +4,15 @@ import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { User } from '../models/User.model';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  })
-};
+const httpOptions =
+{
+  headers:
+    new HttpHeaders(
+      {
+        "Content-Type": "application/json"
+      }),
+  withCredentials: true,
+}
 
 @Injectable()
 export class LoginService {
@@ -17,11 +21,11 @@ export class LoginService {
   constructor(private _http: HttpClient) { }
 
   login(user): Observable<User> {
-    return this._http.post<User>(this.base_url + 'login', user, { withCredentials: true })
+    return this._http.post<User>(this.base_url + 'login', user, httpOptions)
   }
 
   logout() {
-    return this._http.get(this.base_url + 'logout', { withCredentials: true })
+    return this._http.get(this.base_url + 'logout', httpOptions)
   }
 
   setSessionStorageVar(key, value) {
