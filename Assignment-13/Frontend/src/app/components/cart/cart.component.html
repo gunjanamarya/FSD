@@ -8,7 +8,7 @@
     <br>
     Total Quantity : {{cart[find('Pen')].quantity}}
     <br>
-    Total Price : {{findPrice('Pen') * cart[find('Pen')].quantity}}
+    Total Price : &#x20b9;{{findPrice('Pen') * cart[find('Pen')].quantity}}
   </div>
 </div>
 
@@ -19,7 +19,7 @@
     <br>
     Total Quantity : {{cart[find('Pencil')].quantity}}
     <br>
-    Total Price : {{findPrice('Pencil') * cart[find('Pencil')].quantity}}
+    Total Price : &#x20b9;{{findPrice('Pencil') * cart[find('Pencil')].quantity}}
   </div>
 </div>
 
@@ -30,7 +30,7 @@
     <br>
     Total Quantity : {{cart[find('Eraser')].quantity}}
     <br>
-    Total Price : {{findPrice('Eraser') * cart[find('Eraser')].quantity}}
+    Total Price : &#x20b9;{{findPrice('Eraser') * cart[find('Eraser')].quantity}}
   </div>
 </div>
 
@@ -41,7 +41,7 @@
     <br>
     Total Quantity : {{cart[find('Sharpner')].quantity}}
     <br>
-    Total Price : {{findPrice('Sharpner') * cart[find('Sharpner')].quantity}}
+    Total Price : &#x20b9;{{findPrice('Sharpner') * cart[find('Sharpner')].quantity}}
   </div>
 </div>
 
@@ -52,7 +52,7 @@
     <br>
     Total Quantity : {{cart[find('Writing Pad')].quantity}}
     <br>
-    Total Price : {{findPrice('Writing Pad') * cart[find('Writing Pad')].quantity}}
+    Total Price : &#x20b9;{{findPrice('Writing Pad') * cart[find('Writing Pad')].quantity}}
   </div>
 </div>
 
@@ -63,14 +63,16 @@
     <br>
     Total Quantity : {{cart[find('Ruler')].quantity}}
     <br>
-    Total Price : {{findPrice('Ruler') * cart[find('Ruler')].quantity}}
+    Total Price : &#x20b9;{{findPrice('Ruler') * cart[find('Ruler')].quantity}}
   </div>
 </div>
 
-<button type="button" class="btn btn-success" (click)="submit()">Place Order</button>
+<button *ngIf="!edit" type="button" class="btn btn-success" (click)="submit()">PLACE ORDER</button>
+<button *ngIf="edit" type="button" class="btn btn-success" (click)="onEdit()">EDIT ORDER</button>
+<button *ngIf="edit" type="button" class="btn btn-danger" (click)="cancelEdit()">CANCEL EDIT</button>
 <br>
 <br>
-<p> Missed Something or want to edit your order ?? <a routerLink="/dashboard">Go Back</a></p>
+<p> Missed Something ?? <a routerLink="/dashboard">Go Back</a></p>
 <p *ngIf="error" style="color:red">{{error}}</p>
 
 <!-- Success Modal -->
@@ -78,13 +80,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <h5>Yay !! Your order is submitted .
+        <h5>Yay... Your order is placed !! Thank you for shopping with us
         </h5>
+        <h6>You have spent &#x20b9;{{amount_spent}}</h6>
         <br>
-        <button type="button" class="btn btn-success" style="margin:0px"><a routerLink="/history" style="text-decoration: none; color: white">View
-            Active Order(s)</a></button>
+        <button type="button" class="btn btn-success" style="margin:0px"><a routerLink="/history" style="text-decoration: none; color: white">VIEW
+            ACTIVE ORDER(s)</a></button>
       </div>
-
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <app-header></app-header>
 <a routerLink="/dashboard">Go to Dashboard to shop more !!</a>
 
-<p *ngIf="orders && orders.length > 0; then tmpl1 else tmpl2"></p>
+<p *ngIf="show; then tmpl2 else tmpl1"></p>
 <ng-template #tmpl1>
     <div class="orders-list" *ngIf="active_orders.length > 0">
         <h5>ACTIVE ORDER(s)</h5>
@@ -16,8 +16,8 @@
                 <p class="cost">
                     Total spending : &#x20b9; {{order.amount_spent}}
                 </p>
-                <button class="btn btn-primary" (click)="edit(order.id)">Edit Order</button>
-                <button class="btn btn-danger" (click)="delete(order.id)">Cancel Order</button>
+                <button class="btn btn-primary" (click)="edit(order.id)">EDIT ORDER</button>
+                <button class="btn btn-danger" (click)="delete(order.id)">CANCEL ORDER</button>
             </div>
         </div>
     </div>

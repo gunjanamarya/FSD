@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('passport')
+var passport = require('passport');
 // var Task = require('../models/Tasks');
 var db = require('../dbconnection');
 
 router.post('/place-order', function (req, res, next) {
+
     var order = [
         [
             req.user.username,
@@ -20,9 +21,23 @@ router.post('/place-order', function (req, res, next) {
             res.json(result)
         }
     });
+
+});
+
+router.put('/edit-order/:id', function (req, res, next) {
+
+    db.query("UPDATE orders SET cart = ? , amount_spent = ? , purchase_timestamp = CURRENT_TIMESTAMP() WHERE id = ?", [JSON.stringify(req.body.cart), req.body.amount_spent, req.params.id], function (err, result) {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(result)
+        }
+    });
+
 });
 
 router.get('/get-order', function (req, res, next) {
+
     db.query("SELECT * FROM `orders` WHERE `username`= ? ORDER BY `purchase_timestamp` DESC", [req.user.username], function (err, result) {
         if (err) {
             res.json(err)
@@ -30,9 +45,23 @@ router.get('/get-order', function (req, res, next) {
             res.json(result)
         }
     });
+
+});
+
+router.get('/search-order/:id', function (req, res, next) {
+
+    db.query("SELECT * FROM `orders` WHERE `id`= ?", [req.params.id], function (err, result) {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(result)
+        }
+    });
+
 });
 
 router.delete('/delete-order/:id', function (req, res, next) {
+
     db.query("DELETE FROM `orders` WHERE `id` = ?", +[req.params.id], function (err, result) {
         if (err) {
             res.json(err)
@@ -40,6 +69,7 @@ router.delete('/delete-order/:id', function (req, res, next) {
             res.json(result)
         }
     });
+
 });
 
 router.post('/login', passport.authenticate('local', {

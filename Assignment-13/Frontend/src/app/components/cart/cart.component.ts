@@ -3,6 +3,7 @@ import { LoginService } from '../../services/login.service';
 import { Order, Cart } from '../../models/Order.model';
 import { products } from '../../../app/app.settings';
 import { OrderService } from '../../services/order.service';
+import { Router, ActivatedRoute } from '@angular/router'
 declare var $: any;
 
 @Component({
@@ -18,14 +19,24 @@ export class CartComponent implements OnInit {
   order: Order;
   amount_spent: number;
   error: string;
+  id: string;
+  edit: boolean;
 
   constructor(private loginService: LoginService,
-    private orderService: OrderService) { }
+    private orderService: OrderService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
+    this.id = null;
+    this.edit = false;
     this.cart = JSON.parse(this.loginService.getSessionStorageVar('cart'))
     this.calculateAmount();
     // console.log(this.cart);
+    this.id = this.route.snapshot.queryParamMap.get('id');
+    if (this.id) {
+      this.edit = true
+    }
   }
 
   ngOnDestroy() {
@@ -69,6 +80,24 @@ export class CartComponent implements OnInit {
     }, error => {
       this.error = "Sorry !! We can't place your order at the moment. "
     })
+  }
+
+  onEdit() {
+    let order = {
+      cart: this.cart,
+      amount_spent: this.amount_spent,
+    }
+    this.orderService.editOrder(order, this.id).subscribe(data => {
+      this.loginService.clearSessionVar('cart');
+      $('#successModal').modal({ backdrop: 'static', keyboard: false, show: true });
+    }, error => {
+      this.error = "Sorry !! We can't edit your order at the moment. "
+    })
+  }
+
+  cancelEdit() {
+    this.loginService.clearSessionVar('cart');
+    this.router.navigate(['/history'])
   }
 
 }

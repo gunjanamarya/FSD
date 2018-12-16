@@ -1,12 +1,17 @@
 <app-header></app-header>
 
 <div class="cart-header" *ngIf="amount_spent > 0">
-    <span class="amt-spent">
+    <div class="amt-spent">
         &#x20b9; {{amount_spent}} <br> **Inclusive of all taxes
-    </span>
-    <span>
-        <a routerLink="/cart">VIEW CART -></a>
-    </span>
+    </div>
+    <div class="header-btn">
+        <button class="btn btn-success" (click)="goToCart()">
+            VIEW CART
+        </button>
+        <button class="btn btn-success" (click)="resetCart()">
+            EMPTY CART
+        </button>
+    </div>
 </div>
 
 <div class="card-group">
@@ -22,16 +27,16 @@
                 </div>
                 <div class="selection">
                     <div class="add-items" *ngIf="displayQuantity('Pen')">
-                        <button (click)="decreement('Pen')">-</button>
+                        <button class="order-btn" (click)="decreement('Pen')">-</button>
                     </div>
                     <div class="add-items" *ngIf="!displayQuantity('Pen')">
-                        <button (click)="add(0)">Add</button>
+                        <button class="order-btn" (click)="add(0)">ADD</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Pen')">
-                        <button>{{displayQuantity('Pen')}}</button>
+                        <button class="order-btn">{{displayQuantity('Pen')}}</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Pen')">
-                        <button (click)="increement('Pen')">+</button>
+                        <button class="order-btn" (click)="increement('Pen')">+</button>
                     </div>
                 </div>
             </div>
@@ -49,16 +54,16 @@
                 </div>
                 <div class="selection">
                     <div class="add-items" *ngIf="displayQuantity('Pencil')">
-                        <button (click)="decreement('Pencil')">-</button>
+                        <button class="order-btn" (click)="decreement('Pencil')">-</button>
                     </div>
                     <div class="add-items" *ngIf="!displayQuantity('Pencil')">
-                        <button (click)="add(1)">Add</button>
+                        <button class="order-btn" (click)="add(1)">ADD</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Pencil')">
-                        <button>{{displayQuantity('Pencil')}}</button>
+                        <button class="order-btn">{{displayQuantity('Pencil')}}</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Pencil')">
-                        <button (click)="increement('Pencil')">+</button>
+                        <button class="order-btn" (click)="increement('Pencil')">+</button>
                     </div>
                 </div>
             </div>
@@ -76,16 +81,16 @@
                 </div>
                 <div class="selection">
                     <div class="add-items" *ngIf="displayQuantity('Eraser')">
-                        <button (click)="decreement('Eraser')">-</button>
+                        <button class="order-btn" (click)="decreement('Eraser')">-</button>
                     </div>
                     <div class="add-items" *ngIf="!displayQuantity('Eraser')">
-                        <button (click)="add(2)">Add</button>
+                        <button class="order-btn" (click)="add(2)">ADD</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Eraser')">
-                        <button>{{displayQuantity('Eraser')}}</button>
+                        <button class="order-btn">{{displayQuantity('Eraser')}}</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Eraser')">
-                        <button (click)="increement('Eraser')">+</button>
+                        <button class="order-btn" (click)="increement('Eraser')">+</button>
                     </div>
                 </div>
             </div>
@@ -106,16 +111,16 @@
                 </div>
                 <div class="selection">
                     <div class="add-items" *ngIf="displayQuantity('Sharpner')">
-                        <button (click)="decreement('Sharpner')">-</button>
+                        <button class="order-btn" (click)="decreement('Sharpner')">-</button>
                     </div>
                     <div class="add-items" *ngIf="!displayQuantity('Sharpner')">
-                        <button (click)="add(3)">Add</button>
+                        <button class="order-btn" (click)="add(3)">ADD</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Sharpner')">
-                        <button>{{displayQuantity('Sharpner')}}</button>
+                        <button class="order-btn">{{displayQuantity('Sharpner')}}</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Sharpner')">
-                        <button (click)="increement('Sharpner')">+</button>
+                        <button class="order-btn" (click)="increement('Sharpner')">+</button>
                     </div>
                 </div>
             </div>
@@ -133,16 +138,16 @@
                 </div>
                 <div class="selection">
                     <div class="add-items" *ngIf="displayQuantity('Writing Pad')">
-                        <button (click)="decreement('Writing Pad')">-</button>
+                        <button class="order-btn" (click)="decreement('Writing Pad')">-</button>
                     </div>
                     <div class="add-items" *ngIf="!displayQuantity('Writing Pad')">
-                        <button (click)="add(4)">Add</button>
+                        <button class="order-btn" (click)="add(4)">ADD</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Writing Pad')">
-                        <button>{{displayQuantity('Writing Pad')}}</button>
+                        <button class="order-btn">{{displayQuantity('Writing Pad')}}</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Writing Pad')">
-                        <button (click)="increement('Writing Pad')">+</button>
+                        <button class="order-btn" (click)="increement('Writing Pad')">+</button>
                     </div>
                 </div>
             </div>
@@ -160,18 +165,34 @@
                 </div>
                 <div class="selection">
                     <div class="add-items" *ngIf="displayQuantity('Ruler')">
-                        <button (click)="decreement('Ruler')">-</button>
+                        <button class="order-btn" (click)="decreement('Ruler')">-</button>
                     </div>
                     <div class="add-items" *ngIf="!displayQuantity('Ruler')">
-                        <button (click)="add(5)">Add</button>
+                        <button class="order-btn" (click)="add(5)">ADD</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Ruler')">
-                        <button>{{displayQuantity('Ruler')}}</button>
+                        <button class="order-btn">{{displayQuantity('Ruler')}}</button>
                     </div>
                     <div class="add-items" *ngIf="displayQuantity('Ruler')">
-                        <button (click)="increement('Ruler')">+</button>
+                        <button class="order-btn" (click)="increement('Ruler')">+</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Warning Modal -->
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h6> Are you sure you want to empty the cart ? This will cancel your edit order transaction .
+                </h6>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" (click)="forceClear()">Yes</button>
             </div>
         </div>
     </div>

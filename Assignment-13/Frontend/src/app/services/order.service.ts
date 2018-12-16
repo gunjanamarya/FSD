@@ -28,6 +28,14 @@ export class OrderService {
   }
 
   deleteOrder(id): any {
-    return this._http.delete(this.base_url + `delete-order/${id}`)
+    return this._http.delete<any>(this.base_url + `delete-order/${id}`, httpOptions);
+  }
+
+  editOrder(order, id): any {
+    return this._http.put<any>(this.base_url + `edit-order/${id}`, order, httpOptions);
+  }
+
+  searchOrder(id): any {
+    return this._http.get<any>(this.base_url + `search-order/${id}`, httpOptions);
   }
 }

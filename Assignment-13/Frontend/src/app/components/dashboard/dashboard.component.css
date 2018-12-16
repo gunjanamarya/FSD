@@ -28,7 +28,7 @@ img{
     float: right; 
 }
 
-button{
+button.order-btn{
     background-color: white;
     border: 1px solid green;
     cursor: pointer;
@@ -39,20 +39,28 @@ button{
     float: right !important;
 }
 
-.amt-spent, .total-price, .goto{
+.total-price, .goto{
     display: inline;
 }
 
+.amt-spent {
+    float:right;
+}
+
 .cart-header{    
-    padding-left: 1%;
+    padding-right: 1%;
+    height: 50px;
     background-color: #6c757d;
     color: white;
 }
 
-a{
-    display: inherit;
-    float: right;
-    padding-right: 1%;     
+a{         
     color: white;
     text-decoration: none;    
+}
+
+.header-btn{
+    /* float: left; */
+    padding-top: 0.5%;
+    padding-left: 1%;
 }

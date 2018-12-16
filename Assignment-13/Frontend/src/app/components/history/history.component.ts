@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { Order } from '../../models/Order.model';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-history',
@@ -13,8 +15,10 @@ export class HistoryComponent implements OnInit {
   orders: Order[] = new Array();
   active_orders: Order[];
   approved_orders: Order[];
+  show: boolean = false;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getOrders();
@@ -24,6 +28,9 @@ export class HistoryComponent implements OnInit {
     this.orders = this.active_orders = this.approved_orders = []
     this.orderService.getCart().subscribe(data => {
       var temp1 = data
+      if (temp1.length == 0) {
+        this.show = true
+      }
       for (var i = 0; i < temp1.length; i++) {
         this.orders.push({
           id: temp1[i].id,
@@ -36,7 +43,7 @@ export class HistoryComponent implements OnInit {
       }
       this.active_orders = this.orders.filter(order => order.order_status == 'submitted')
       this.approved_orders = this.orders.filter(order => order.order_status != 'submitted')
-      console.log(this.active_orders, this.approved_orders)
+      // console.log(this.active_orders, this.approved_orders)
     })
   }
 
@@ -44,6 +51,17 @@ export class HistoryComponent implements OnInit {
     this.orderService.deleteOrder(id).subscribe(result => {
       this.getOrders();
     })
+  }
+
+  edit(id) {
+    this.router.navigate(['/dashboard'],
+      {
+        queryParams: {
+          "id": id
+        }
+      }
+    )
+
   }
 
 }
