@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    // console.log('dashboard')
     this.id = null;
     let temp = this.loginService.getSessionStorageVar('cart');
     if (temp && temp.length > 0) {
@@ -34,7 +35,7 @@ export class DashboardComponent implements OnInit {
     this.id = this.route.snapshot.queryParamMap.get('id');
     if (this.id) {
       this.orderService.searchOrder(+this.id).subscribe(result => {
-        this.cart = JSON.parse(result[0].cart)
+        this.cart = JSON.parse(result[0].cart);
         this.calculateAmount();
       })
     }

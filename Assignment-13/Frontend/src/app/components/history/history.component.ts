@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { Order } from '../../models/Order.model';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -10,20 +10,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./history.component.css'],
   providers: [OrderService]
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit, OnDestroy {
 
   orders: Order[] = new Array();
   active_orders: Order[];
   approved_orders: Order[];
   show: boolean = false;
   called: boolean = false;
+  navigationSubscription: any;
 
   constructor(private orderService: OrderService,
-    private router: Router) { }
+    private router: Router) {
+    this.navigationSubscription = router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.getOrders();
+      }
+    });
+  }
 
   ngOnInit() {
-    this.getOrders();
-    // this.changeStatus();
   }
 
   getOrders() {
@@ -54,15 +59,15 @@ export class HistoryComponent implements OnInit {
   }
 
   changeStatus() {
-    console.log('change status called')
+    // console.log('change status called')
     this.called = true;
     let now, diff, temp;
     now = (new Date()).getTime();
-    console.log(this.active_orders)
+    // console.log(this.active_orders)
     for (var i = 0; i < this.active_orders.length; i++) {
       temp = new Date(this.active_orders[i].purchase_timestamp).getTime();
       diff = Math.floor((now - temp) / (1000 * 60));
-      console.log(now, temp, diff);
+      // console.log(now, temp, diff);
       if (diff >= 10) {
         this.orderService.approveOrder(this.active_orders[i].id).subscribe();
       }
@@ -86,6 +91,12 @@ export class HistoryComponent implements OnInit {
       }
     )
 
+  }
+
+  ngOnDestroy() {
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
   }
 
 }

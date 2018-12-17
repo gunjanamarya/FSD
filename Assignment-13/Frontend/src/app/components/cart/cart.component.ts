@@ -28,6 +28,7 @@ export class CartComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    // console.log('cart')
     this.id = null;
     this.edit = false;
     this.cart = JSON.parse(this.loginService.getSessionStorageVar('cart'))
