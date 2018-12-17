@@ -23,7 +23,8 @@ con.connect(function (err) {
     con.query("CREATE TABLE IF NOT EXISTS `users` ( `username` VARCHAR(50) NOT NULL, `password` VARCHAR(50) NOT NULL, PRIMARY KEY(`username`, `password`))", function (err, result) {
         if (err) throw err;
         var users = [
-            ['dummy', 'happy'],
+            ['test1', 'happy'],
+            ['test2', 'happy'],
         ]
         con.query("INSERT INTO `users`(username,password) VALUES ?", [users], function (err, result) {
             if (err) throw err;
