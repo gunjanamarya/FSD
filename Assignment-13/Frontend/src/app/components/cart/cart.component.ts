@@ -39,10 +39,6 @@ export class CartComponent implements OnInit {
     }
   }
 
-  ngOnDestroy() {
-    $('.modal-backdrop').remove();
-  }
-
   find(item) {
     for (let i = 0; i < this.cart.length; i++) {
       if (this.cart[i].item == item) {
@@ -98,6 +94,11 @@ export class CartComponent implements OnInit {
   cancelEdit() {
     this.loginService.clearSessionVar('cart');
     this.router.navigate(['/history'])
+  }
+
+  goToHistory() {
+    $('#successModal').modal('hide');
+    this.router.navigate(['/history']);
   }
 
 }

@@ -38,4 +38,8 @@ export class OrderService {
   searchOrder(id): any {
     return this._http.get<any>(this.base_url + `search-order/${id}`, httpOptions);
   }
+
+  approveOrder(id): any {
+    return this._http.put<any>(this.base_url + `/update-status/${id}`, httpOptions);
+  }
 }

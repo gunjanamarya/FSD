@@ -36,6 +36,18 @@ router.put('/edit-order/:id', function (req, res, next) {
 
 });
 
+router.put('/update-status/:id', function (req, res, next) {
+
+    db.query("UPDATE orders SET order_status = ? WHERE id = ?", ["approved", req.params.id], function (err, result) {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(result)
+        }
+    });
+
+});
+
 router.get('/get-order', function (req, res, next) {
 
     db.query("SELECT * FROM `orders` WHERE `username`= ? ORDER BY `purchase_timestamp` DESC", [req.user.username], function (err, result) {
