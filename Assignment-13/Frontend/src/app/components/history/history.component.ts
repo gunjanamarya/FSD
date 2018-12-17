@@ -16,16 +16,18 @@ export class HistoryComponent implements OnInit {
   active_orders: Order[];
   approved_orders: Order[];
   show: boolean = false;
+  called: boolean = false;
 
   constructor(private orderService: OrderService,
     private router: Router) { }
 
   ngOnInit() {
     this.getOrders();
-    this.changeStatus();
+    // this.changeStatus();
   }
 
   getOrders() {
+    // console.log('get orders called')
     this.orders = this.active_orders = this.approved_orders = []
     this.orderService.getCart().subscribe(data => {
       var temp1 = data
@@ -44,25 +46,32 @@ export class HistoryComponent implements OnInit {
       }
       this.active_orders = this.orders.filter(order => order.order_status == 'submitted')
       this.approved_orders = this.orders.filter(order => order.order_status != 'submitted')
+      if (!this.called) {
+        this.changeStatus();
+      }
       // console.log(this.active_orders, this.approved_orders)
     })
   }
 
   changeStatus() {
+    console.log('change status called')
+    this.called = true;
     let now, diff, temp;
-    now = new Date().getTime();
+    now = (new Date()).getTime();
+    console.log(this.active_orders)
     for (var i = 0; i < this.active_orders.length; i++) {
       temp = new Date(this.active_orders[i].purchase_timestamp).getTime();
-      diff = Math.floor((now - temp) / 1000 * 60);
-      console.log(diff);
+      diff = Math.floor((now - temp) / (1000 * 60));
+      console.log(now, temp, diff);
       if (diff >= 10) {
         this.orderService.approveOrder(this.active_orders[i].id).subscribe();
       }
-      this.getOrders();
     }
+    this.getOrders();
   }
 
   delete(id) {
+    this.called = false;
     this.orderService.deleteOrder(id).subscribe(result => {
       this.getOrders();
     })

@@ -40,6 +40,6 @@ export class OrderService {
   }
 
   approveOrder(id): any {
-    return this._http.put<any>(this.base_url + `/update-status/${id}`, httpOptions);
+    return this._http.put<any>(this.base_url + `update-status/${id}`, httpOptions);
   }
 }
