@@ -1,0 +1,4 @@
+1. GitHub Repository URL -
+https://github.com/gunjanamarya/Git-Assignment-18
+
+2. For viewing the git CLI commands used for this assignment, please refer the README from the above URL.
