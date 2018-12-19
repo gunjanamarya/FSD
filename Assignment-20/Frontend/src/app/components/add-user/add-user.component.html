@@ -1,0 +1,56 @@
+<div class="outer-div">
+  <div class="inner-div">
+    <h4>User Registration Form</h4>
+  </div>
+  <form id="user-form" [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+    <table>
+      <tbody>
+        <tr>
+          <td class="expand-col">
+            First Name
+          </td>
+          <td>
+            <input formControlName="firstName" placeholder="First Name" class="form-control" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Last Name
+          </td>
+          <td>
+            <input formControlName="lastName" placeholder="Last Name" class="form-control" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            SSO ID
+          </td>
+          <td>
+            <input formControlName="ssoId" placeholder="SSO ID" class="form-control" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Email
+          </td>
+          <td>
+            <input formControlName="email" placeholder="Email" class="form-control" />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button type="button" class="cancel" (click)="onCancel()">CANCEL</button><button type=submit class="add"
+              [disabled]="!userForm.valid">REGISTER</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <div class="alert alert-success" role="alert" *ngIf="msg">
+    {{msg}}
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
+</div>
