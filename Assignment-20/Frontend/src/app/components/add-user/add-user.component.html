@@ -47,10 +47,18 @@
       </tbody>
     </table>
   </form>
-  <div class="alert alert-success" role="alert" *ngIf="msg">
-    {{msg}}
+  <div *ngIf="msg">
+    <div class="alert alert-success" role="alert">
+      {{msg}}
+    </div>
+    <span>
+      <a routerLink="/add-doc">Click here to manage/upload your documents</a>
+      <span style="float:right">
+        Go To &nbsp;<a routerLink="/list-users">Users List</a></span>
+    </span>
   </div>
   <div class="alert alert-danger" role="alert" *ngIf="error">
     {{error}}
   </div>
+
 </div>
