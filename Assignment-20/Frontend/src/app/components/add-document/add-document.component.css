@@ -1,0 +1,35 @@
+
+.add-doc, .list-docs{
+    border: 1px solid grey;
+    margin-top: 1%;
+}
+
+.upload-section{
+    background-color: rgb(241, 205, 192);
+    padding: 2%;
+    height: 150px;
+    margin: 0.5%;
+}
+
+input.upload-input{
+    border: 1px solid grey;
+    text-align: center;
+    padding: 1px;
+}
+
+label{
+    width: 30%;
+    font-weight: 600;
+}
+
+input{
+    width: 50%;
+}
+
+button.btn-s{
+    float: right;
+}
+
+th{
+    width: 20%;
+}

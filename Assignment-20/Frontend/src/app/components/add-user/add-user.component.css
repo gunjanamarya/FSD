@@ -1,21 +1,3 @@
-.outer-div{
-    border: 1px solid gray;
-    border-radius: 2px;
-    padding: 10px;
-    width: 90%;
-    margin: 5%;
-    background-color:  rgb(230, 226, 226);
-}
-
-.inner-div{
-    border-radius: 2px;
-    border: 1px solid #ededed;
-    background-color: #ededed !important;
-    height: 20%;
-    margin: 5px 5px 20px 5px;
-    padding: 1%;
-}
-
 .expand-col{
     width: 50%;
 }

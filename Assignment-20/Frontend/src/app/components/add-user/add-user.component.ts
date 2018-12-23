@@ -16,6 +16,7 @@ export class AddUserComponent implements OnInit {
   user: User;
   msg: string;
   error: string;
+  id: string;
 
   constructor(private fb: FormBuilder,
     private userService: UserService) { }
@@ -41,6 +42,7 @@ export class AddUserComponent implements OnInit {
       "ssoId": this.userForm.get('ssoId').value,
     }
     this.userService.addUser(this.user).subscribe(result => {
+      this.id = result._id;
       this.msg = "User " + this.user.firstName + " " + this.user.lastName + " registered successfully !"
     }, error => {
       this.msg = null;

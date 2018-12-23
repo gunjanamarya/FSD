@@ -1,3 +1,55 @@
-<p>
-  add-document works!
-</p>
+<div class="outer-div">
+  <div class="list-docs">
+    <div class="inner-div">
+      <h4>
+        List Of Documents
+      </h4>
+    </div>
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">S No.</th>
+          <th scope="col">File Name</th>
+          <th scope="col">Type</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of files; let i=index">
+          <td>{{i+1}}</td>
+          <td>{{file.originalName}}</td>
+          <td>{{file.type}}</td>
+          <td>{{file.description}}</td>
+          <td>
+            <button class="btn btn-success" (click)="onDownload(file.originalName,file.fileName)">Download</button>
+            <button class="btn btn-danger" (click)="onDelete(file._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="add-doc">
+    <div class="inner-div">
+      <h4>
+        Upload New Document
+      </h4>
+    </div>
+    <div class="upload-section">
+      <form enctype="multipart/form-data">
+        <label for="file">Upload a Document</label>
+        <input type="file" name="file" ng2FileSelect [uploader]="uploader" class="upload-input" />
+        <br>
+        <label for="desc">Description</label>
+        <input type="text" name="desc" [(ngModel)]="desc" />
+        <br>
+        <button type="button" class="btn btn-primary btn-s" (click)="upload()" [disabled]="!uploader.getNotUploadedItems().length">
+          Upload
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="inner-div">
+    <a routerLink="/list-users">Go To Users List</a>
+  </div>
+</div>

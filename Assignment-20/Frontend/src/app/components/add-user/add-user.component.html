@@ -52,8 +52,7 @@
       {{msg}}
     </div>
     <span>
-      <a routerLink="/add-doc">Click here to manage/upload your documents</a>
-      <span style="float:right">
+      <a routerLink="/add-doc" [queryParams]="{id: id}">Click here to manage/upload your documents</a> <span style="float:right">
         Go To &nbsp;<a routerLink="/list-users">Users List</a></span>
     </span>
   </div>
