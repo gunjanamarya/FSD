@@ -12,11 +12,8 @@ module.exports = function (app) {
     app.route('/add-file')
         .post(services.add_file)
 
-    app.route('/get-files')
+    app.route('/get-files/:id')
         .get(services.get_files)
-
-    // app.route('/get-files/:id')
-    //     .get(services.get_files)
 
     app.route('/delete-file/:id')
         .delete(services.delete_file)

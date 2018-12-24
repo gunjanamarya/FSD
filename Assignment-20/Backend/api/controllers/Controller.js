@@ -36,13 +36,13 @@ exports.add_file = function (req, res) {
             console.log(err);
             return res.status(422).send("an Error occured")
         }
-        console.log(req.files[0].formData)
+        // console.log(req.files[0].formData)
         var doc = new Document({
             originalName: req.files[0].originalname,
             fileName: req.files[0].filename,
             type: req.files[0].mimetype,
-            // userId: req.body.user_id,
-            // description: req.body.description
+            userId: req.body.userId,
+            description: req.body.description
         });
         // console.log(doc)
         doc.save(function (err, doc) {
@@ -53,18 +53,13 @@ exports.add_file = function (req, res) {
 }
 
 exports.get_files = function (req, res) {
-    Document.find(function (err, files) {
+    var ObjectId = require('mongoose').Types.ObjectId;
+    Document.find({ userId: new ObjectId(req.params.id) }, function (err, files) {
         if (err) res.json(err)
+
         res.json(files)
     })
 }
-
-// exports.get_files = function (req, res) {
-//     Document.find({user_id: req.params.id},function (err, files) {
-//         if (err) res.json(err)
-//         res.json(files)
-//     })
-// }
 
 exports.delete_file = function (req, res) {
     Document.deleteOne({ _id: req.params.id }, function (err, file) {

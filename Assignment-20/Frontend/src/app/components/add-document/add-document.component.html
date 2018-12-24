@@ -43,7 +43,7 @@
         <label for="desc">Description</label>
         <input type="text" name="desc" [(ngModel)]="desc" />
         <br>
-        <button type="button" class="btn btn-primary btn-s" (click)="upload()" [disabled]="!uploader.getNotUploadedItems().length">
+        <button type="button" class="btn btn-primary btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
           Upload
         </button>
       </form>

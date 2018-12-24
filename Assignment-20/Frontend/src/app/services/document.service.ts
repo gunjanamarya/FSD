@@ -9,8 +9,8 @@ export class DocumentService {
   base_url = 'http://localhost:3000/';
   constructor(private _http: HttpClient) { }
 
-  getFiles(): Observable<any> {
-    return this._http.get<any[]>(this.base_url + 'get-files');
+  getFiles(id): Observable<any> {
+    return this._http.get<any[]>(this.base_url + `get-files/${id}`);
   }
 
   deleteFile(id): Observable<any> {

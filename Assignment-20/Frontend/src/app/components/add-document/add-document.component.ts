@@ -29,24 +29,19 @@ export class AddDocumentComponent implements OnInit {
     this.getFiles();
 
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-
+    this.uploader.onBuildItemForm = (fileItem: any, form: any) => {
+      form.append("description", (this.desc != undefined ? this.desc : ""));
+      form.append("userId", this.id);
+    };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      console.log('ImageUpload:uploaded:', item, status, response);
+      // console.log('ImageUpload:uploaded:', item, status, response);
       this.getFiles();
     };
   }
 
-  upload() {
-    this.uploader.onBuildItemForm = function (fileItem, form) {
-      form.append("description", 'demo');
-      form.append("userId", '5c1e8c5b85ef882b24324f88');
-      return { fileItem, form }
-    }
-    this.uploader.uploadAll();
-  }
-
   getFiles() {
-    this.documentService.getFiles().subscribe(data => {
+    // console.log('getfiles called')
+    this.documentService.getFiles(this.id).subscribe(data => {
       this.files = data;
     })
   }
